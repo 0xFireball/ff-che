@@ -1,30 +1,17 @@
 {
-  "name": "0xFireball-dotnet",
+  "name": "0xfireball-dotnet",
   "source": {
     "origin": "codenvy/dotnet_core",
     "type": "image"
   },
-  "components": [
-    {
-      "version": "14.04",
-      "name": "Ubuntu"
-    },
-    {
-      "version": "1.1-sdk-projectjson",
-      "name": ".NET Core SDK"
-    },
-    {
-      "version": "---",
-      "name": "Node"
-    }
-  ],
+  "components": [],
   "tags": [
-    "Ubuntu",
     "dotnet",
-    "Git",
-    "Node"
+    "ubuntu",
+    "git",
+    "node"
   ],
-  "id": "stacki1zi1z4bfqyy214z",
+  "id": "stack5xe01gstc3pdpb4i",
   "workspaceConfig": {
     "environments": {
       "default": {
@@ -33,49 +20,38 @@
             "attributes": {
               "memoryLimitBytes": "2147483648"
             },
-            "servers": {},
+            "servers": {
+              "5000/tcp": {
+                "port": "5000",
+                "properties": {},
+                "protocol": "http"
+              },
+              "8020/tcp": {
+                "port": "8020",
+                "properties": {},
+                "protocol": "http"
+              }
+            },
             "agents": [
               "org.eclipse.che.terminal",
               "org.eclipse.che.ws-agent",
               "org.eclipse.che.ssh",
-              "org.eclipse.che.ls.json",
-              "org.eclipse.che.ls.csharp"
+              "org.eclipse.che.ls.csharp",
+              "org.eclipse.che.ls.json"
             ]
           }
         },
         "recipe": {
-          "location": "codenvy/dotnet_core",
-          "type": "dockerimage"
+          "type": "compose",
+          "content": "services:\n  dev-machine:\n    image: 0xfireball/che-0xfireball-dotnet\n",
+          "contentType": "application/x-yaml"
         }
       }
     },
     "defaultEnv": "default",
     "projects": [],
     "name": "default",
-    "commands": [
-      {
-        "commandLine": "cd ${current.project.path} && dotnet restore",
-        "name": "update dependencies",
-        "attributes": {
-          "previewUrl": ""
-        },
-        "type": "custom"
-      },
-      {
-        "commandLine": "cd ${current.project.path} && dotnet run",
-        "name": "run",
-        "attributes": {
-          "previewUrl": "http://${server.port.5000}"
-        },
-        "type": "custom"
-      },
-      {
-        "commandLine": "cd ${current.project.path} && dotnet publish -c Release",
-        "name": "publish (Release)",
-        "attributes": {},
-        "type": "custom"
-      }
-    ],
+    "commands": [],
     "links": []
   },
   "description": "Custom .NET Core stack by 0xFireball, with Ubuntu, Node, and .NET Core SDK. Also adds the C# and JSON Language servers",

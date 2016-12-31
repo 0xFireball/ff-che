@@ -1,0 +1,84 @@
+{
+  "name": "0xFireball dotnet",
+  "source": {
+    "origin": "codenvy/dotnet_core",
+    "type": "image"
+  },
+  "components": [
+    {
+      "version": "14.04",
+      "name": "Ubuntu"
+    },
+    {
+      "version": "1.0.0-preview1-002702",
+      "name": ".NET Core SDK"
+    },
+    {
+      "version": "---",
+      "name": "Node"
+    }
+  ],
+  "tags": [
+    "Ubuntu",
+    "dotnet",
+    "Git",
+    "Node"
+  ],
+  "id": "stacki1zi1z4bfqyy214z",
+  "workspaceConfig": {
+    "environments": {
+      "default": {
+        "machines": {
+          "dev-machine": {
+            "attributes": {
+              "memoryLimitBytes": "2147483648"
+            },
+            "servers": {},
+            "agents": [
+              "org.eclipse.che.terminal",
+              "org.eclipse.che.ws-agent",
+              "org.eclipse.che.ssh",
+              "org.eclipse.che.ls.json",
+              "org.eclipse.che.ls.csharp"
+            ]
+          }
+        },
+        "recipe": {
+          "location": "codenvy/dotnet_core",
+          "type": "dockerimage"
+        }
+      }
+    },
+    "defaultEnv": "default",
+    "projects": [],
+    "name": "default",
+    "commands": [
+      {
+        "commandLine": "cd ${current.project.path} && dotnet restore",
+        "name": "update dependencies",
+        "attributes": {
+          "previewUrl": ""
+        },
+        "type": "custom"
+      },
+      {
+        "commandLine": "cd ${current.project.path} && dotnet run",
+        "name": "run",
+        "attributes": {
+          "previewUrl": "http://${server.port.5000}"
+        },
+        "type": "custom"
+      },
+      {
+        "commandLine": "cd ${current.project.path} && dotnet publish -c Release",
+        "name": "publish (Release)",
+        "attributes": {},
+        "type": "custom"
+      }
+    ],
+    "links": []
+  },
+  "description": "Custom .NET Core stack by 0xFireball, with Ubuntu, Node, and .NET Core SDK. Also adds the C# and JSON Language servers",
+  "creator": "usergwgl49rhfh6k1y5o",
+  "scope": "general"
+}

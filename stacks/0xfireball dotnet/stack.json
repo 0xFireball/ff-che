@@ -10,6 +10,7 @@
       "name": "Ubuntu"
     },
     {
+      "version": "1.1-sdk-projectjson",
       "name": ".NET Core SDK"
     },
     {

@@ -1,5 +1,5 @@
 {
-  "name": "0xFireball dotnet",
+  "name": "0xFireball-dotnet",
   "source": {
     "origin": "codenvy/dotnet_core",
     "type": "image"

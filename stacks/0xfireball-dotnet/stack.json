@@ -11,7 +11,7 @@
     },
     {
       "version": "7.x",
-      "name": "Node.js"
+      "name": "Node"
     },
     {
       "version": "14.04",
@@ -64,7 +64,28 @@
     "defaultEnv": "default",
     "projects": [],
     "name": "default",
-    "commands": [],
+    "commands": [
+      {
+        "commandLine": "cd ${current.project.path} && dotnet restore",
+        "name": "update dependencies",
+        "attributes": {},
+        "type": "custom"
+      },
+      {
+        "commandLine": "cd ${current.project.path} && dotnet run",
+        "name": "run",
+        "attributes": {
+          "previewUrl": "http://${server.port.5000}"
+        },
+        "type": "custom"
+      },
+      {
+        "commandLine": "cd ${current.project.path} && dotnet publish -c Release",
+        "name": "publish (release)",
+        "attributes": {},
+        "type": "custom"
+      }
+    ],
     "links": []
   },
   "description": "Custom .NET Core stack by 0xFireball, with Ubuntu, Node, and .NET Core SDK. Also adds the C# and JSON Language servers",

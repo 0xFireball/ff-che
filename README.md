@@ -1,2 +1,4 @@
-# ff-che-dockerfiles
-My custom recipes for Eclipse Che
+
+# ff-che
+
+My custom stuff for Eclipse Che
